@@ -75,6 +75,7 @@ public class SignupService {
 			throw new ServiceCommonException("104", new String[] {"User mobile number"});
 		}
 		
+		logger.debug("aesSymmetricEncryption.getSecretKey():{}",aesSymmetricEncryption.getSecretKey());
 		List<MongokeyvaluePair<? extends Object>> keyValuePairs = new ArrayList<>();
 		keyValuePairs.add(new MongokeyvaluePair<String>("password", aesSymmetricEncryption.encryptAsString(password, aesSymmetricEncryption.getSecretKey()) ));
 		keyValuePairs.add(new MongokeyvaluePair<String>("creationdate", DateUtil.getCurrentDateTime()));
